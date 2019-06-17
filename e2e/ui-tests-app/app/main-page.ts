@@ -11,13 +11,15 @@ export function pageLoaded(args: EventData) {
     examples.set("animation", "animation/main-page");
     examples.set("action-bar", "action-bar/main-page");
     examples.set("bindings", "bindings/main-page");
+    examples.set("bottom-navigation", "bottom-navigation/main-page");
+    examples.set("tabs", "tabs/main-page");
     examples.set("button", "button/main-page");
     examples.set("css", "css/main-page");
     examples.set("dialogs", "dialogs/main-page");
     examples.set("events", "events/main-page");
     examples.set("fonts", "fonts-tests/main-page");
     examples.set("flexbox", "flexbox/flexbox-main-page");
-    examples.set("htmlview", "html-view/html-view");
+    examples.set("htmlview", "html-view/html-view-page");
     examples.set("image-view", "image-view/main-page");
     examples.set("issues", "issues/main-page");
     examples.set("layouts", "layouts/main-page");
