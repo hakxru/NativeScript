@@ -3,7 +3,7 @@ import { Platform } from "mobile-devices-controller";
 import { ImageOptions } from "nativescript-dev-appium/lib/image-options";
 import { PageObjectBaseModel } from "../../../page-object-base-model";
 
-export class BackgroundPage extends PageObjectBaseModel {
+export class ButtonBackgroundPage extends PageObjectBaseModel {
 
     constructor(_driver: AppiumDriver) {
         super(_driver, ["button", "background"], false);
@@ -47,6 +47,6 @@ export class BackgroundPage extends PageObjectBaseModel {
         const presenter = await this.testElement();
         await this.tapBtn(button);
         await this.imageHelper.compareElement(imageName, presenter, 18, 5, ImageOptions.pixel);
-        this.imageHelper.assertImages()
+        this.imageHelper.assertImages();
     };
 }

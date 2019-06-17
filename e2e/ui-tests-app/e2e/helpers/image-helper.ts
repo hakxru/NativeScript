@@ -1,12 +1,16 @@
-import { AppiumDriver, UIElement, logError, IRectangle } from "nativescript-dev-appium";
+import { AppiumDriver, logError, IRectangle, UIElement, logInfo, SearchOptions } from "nativescript-dev-appium";
 import { ImageOptions } from "nativescript-dev-appium/lib/image-options";
 import { assert } from "chai";
 
 export class ImageHelper {
     private _imagesResults = new Map<string, boolean>();
-    constructor(private _driver: AppiumDriver) { }
+
+    constructor(private _driver: AppiumDriver, waitOnCreatingInitialSnapshot: number = 1000  ) {
+        this._driver.imageHelper.waitOnCreatingInitialSnapshot = waitOnCreatingInitialSnapshot;
+     }
 
     public async compareScreen(imageName: string, timeOutSeconds?: number, tolerance?: number, toleranceType?: ImageOptions) {
+        imageName = this.increaseImageName(imageName);
         const result = await this._driver.compareScreen(imageName, timeOutSeconds, tolerance, toleranceType)
         this._imagesResults.set(imageName, result);
 
@@ -14,6 +18,7 @@ export class ImageHelper {
     }
 
     public async compareElement(imageName: string, element: UIElement, tolerance: number, timeOutSeconds: number, toleranceType: ImageOptions = ImageOptions.pixel) {
+        imageName = this.increaseImageName(imageName);        
         const result = await this._driver.compareElement(element, imageName, tolerance, timeOutSeconds, toleranceType)
         this._imagesResults.set(imageName, result);
 
@@ -21,6 +26,7 @@ export class ImageHelper {
     }
 
     public async compareRectangle(imageName: string, element: IRectangle, tolerance: number, timeOutSeconds: number, toleranceType: ImageOptions = ImageOptions.pixel) {
+        imageName = this.increaseImageName(imageName);        
         const result = await this._driver.compareRectangle(element, imageName, timeOutSeconds, tolerance, toleranceType)
         this._imagesResults.set(imageName, result);
 
@@ -43,5 +49,13 @@ export class ImageHelper {
 
     public reset() {
         this._imagesResults.clear();
+    }
+
+    private increaseImageName(imageName: string) {
+        if (this._imagesResults && this._imagesResults.size > 0 && this._imagesResults.has(imageName)) {
+            imageName = `${imageName}_1`;
+        }
+
+        return imageName;
     }
 }
