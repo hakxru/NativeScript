@@ -36,6 +36,7 @@ export class NavigationHelper {
     }
 
     async navigateToSample(sample: string) {
+        logInfo(`Navigate to ${sample}`);
         if (this._samples.size > 0) {
             const sampleElement = this._samples.get(sample.toLowerCase());
             await this._driver.clickPoint(sampleElement.x + (sampleElement.width / 2), sampleElement.y + (sampleElement.height / 2));
@@ -46,11 +47,13 @@ export class NavigationHelper {
     }
 
     async navigateBackToSuitMainPage() {
+        logInfo(`Navigate to back`);
         await this._driver.navBack();
     }
 
     async swipeBackToSuitMainPage() {
-        // await this._driver.swipe();
+        logInfo(`Swipe to back`);
+        throw new Error("Not implemented!");
     }
 }
 

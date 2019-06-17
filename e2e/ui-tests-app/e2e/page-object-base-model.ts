@@ -3,6 +3,7 @@ import { NavigationHelper } from "./helpers/navigation-helper";
 import { ImageHelper } from "./helpers/image-helper";
 
 export abstract class PageObjectBaseModel {
+
     public navigationHelper: NavigationHelper;
     public imageHelper: ImageHelper;
 
@@ -16,8 +17,9 @@ export abstract class PageObjectBaseModel {
     }
 
     async endSuite() {
-        logInfo(`End of suit ${this._naviagtionLinks.join("-")} tests!`);
-        await this._driver.takeScreenshot(this._naviagtionLinks.join("_"));
+        const suiteName = this._naviagtionLinks.join("-");
+        logInfo(`End of suit ${suiteName}  tests!`);
+        await this._driver.takeScreenshot(suiteName);
     }
 
     async navigateToSuitMainPage() {

@@ -14,6 +14,15 @@
             "watch": true
         },
         {
+            "name": "Launch on iOS",
+            "type": "nativescript",
+            "request": "launch",
+            "platform": "ios",
+            "appRoot": "${workspaceRoot}",
+            "sourceMaps": true,
+            "watch": true
+        },
+        {
             "type": "node",
             "request": "launch",
             "name": "Mocha Tests",
@@ -26,9 +35,13 @@
                 "--colors",
                 "${workspaceFolder}/e2e",
                 "ios",
-                "--opts", "./e2e/config/mocha.opts",
-                "ios",
-                "--port","8888"
+                "--opts",
+                "./e2e/config/mocha.opts",
+                "--attachToDebug",
+                "--port","8888",
+                "--grep",
+                "tab-view-common-tests-suite"
+                // "tab-view-\\w+-suite"
             ],
             "internalConsoleOptions": "openOnSessionStart",
             

@@ -1,15 +1,15 @@
 import { AppiumDriver, createDriver, SearchOptions, nsCapabilities } from "nativescript-dev-appium";
 import { assert } from "chai";
-import { BackgroundPage } from "./button-background-page";
+import { ButtonBackgroundPage } from "./button-background-page";
 
 describe("button-background-suite", () => {
     let driver: AppiumDriver;
-    let backgroundPage: BackgroundPage;
+    let backgroundPage: ButtonBackgroundPage;
 
     before(async function () {
         nsCapabilities.testReporter.context = this;
         driver = await createDriver();
-        backgroundPage = new BackgroundPage(driver);
+        backgroundPage = new ButtonBackgroundPage(driver);
         await backgroundPage.initSuite();
     });
 
