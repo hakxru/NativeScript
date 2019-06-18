@@ -183,6 +183,7 @@ function loadInternal(fileName: string, context?: any, moduleNamePath?: string):
 
 function loadCustomComponent(componentPath: string, componentName?: string, attributes?: Object, context?: Object, parentPage?: View, isRootComponent: boolean = true, moduleNamePath?: string): ComponentModule {
     if (!parentPage && context) {
+        //fix this issue
         // Read the parent page that was passed down below
         // https://github.com/NativeScript/NativeScript/issues/1639
         parentPage = context["_parentPage"];
